@@ -2,15 +2,12 @@ import { useState } from "react";
 import "./StudentCard.css";
 
 function StudentCard(props) {
-  // Par défaut, les informations de contact sont masquées
   const [coordonneesVisibles, setCoordonneesVisibles] = useState(false);
 
-  // Fonction pour inverser la visibilité des coordonnées
   function basculerCoordonnees() {
     setCoordonneesVisibles(!coordonneesVisibles);
   }
 
-  // Valeur par défaut pour la ville si elle n'est pas fournie
   const ville = props.ville || "Non renseignée";
 
   return (
@@ -19,7 +16,6 @@ function StudentCard(props) {
       <h1>Fiche étudiant</h1>
       <p>Nom & Prénom :{props.prenom} {props.nom}</p>
 
-      {/* Affichage conditionnel avec l'opérateur && */}
       {coordonneesVisibles && (
         <>
           <p>Email : {props.email}</p>
@@ -33,7 +29,6 @@ function StudentCard(props) {
       <p>Ville : {ville}</p>
 
       <div className="card-actions">
-        {/* Bouton avec opérateur ternaire */}
         <button className="btn-secondary" onClick={basculerCoordonnees}>
           {coordonneesVisibles ? "Masquer les coordonnées" : "Afficher les coordonnées"}
         </button>

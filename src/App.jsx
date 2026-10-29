@@ -8,14 +8,13 @@ import ayoubImage from "./assets/ayoub.jpg";
 import studentImage from "./assets/student.jpg";
 
 function App() {
-  // Étape 1 : gérer la liste avec useState
   const [etudiants, setEtudiants] = useState([
     {
       prenom: "Ayoub",
       nom: "Ben Slama",
       email: "ayoubenslama58@gmail.com",
       telephone: "+216 58 000 000",
-      filiere: "Licence Computer Science",
+      filiere: "Génie Logiciel et Systèmes d'Information",
       anneeEtude: "2ème année",
       groupe: "GLSI 2 A",
       ville: "Ariana",
@@ -26,7 +25,7 @@ function App() {
       nom: "Boubaker",
       email: "slimboubaker@gmail.com",
       telephone: "+216 99 999 999",
-      filiere: "Génie Logiciel et Systèmes d'Information",
+      filiere: "",
       anneeEtude: "2ème année",
       groupe: "GLSI 2",
       ville: "Mahdia",
@@ -40,7 +39,6 @@ function App() {
       filiere: "Licence Computer Science",
       anneeEtude: "1ère année",
       groupe: "LCS 1",
-      // ville omise pour tester la prop par défaut "Non renseignée"
       image: studentImage,
     },
     {
@@ -51,15 +49,12 @@ function App() {
       filiere: "Licence Business Computing",
       anneeEtude: "2ème année",
       groupe: "LBC 2",
-      // ville omise pour tester la prop par défaut "Non renseignée"
       image: studentImage,
     },
   ]);
 
-  // État pour filtrer selon la filière
   const [filtreFiliere, setFiltreFiliere] = useState("");
 
-  // Fonction pour ajouter un étudiant (mise à jour immuable avec spread operator)
   function ajouterEtudiant() {
     const emailBase = "yassine.bensalem";
     const exists = etudiants.some((e) => e.email === `${emailBase}@gmail.com`);
@@ -82,14 +77,12 @@ function App() {
     setEtudiants([...etudiants, nouvelEtudiant]);
   }
 
-  // Fonction pour supprimer un étudiant
   function supprimerEtudiant(emailASupprimer) {
     setEtudiants(
       etudiants.filter((etudiant) => etudiant.email !== emailASupprimer)
     );
   }
 
-  // Fonction pour modifier une information d'un étudiant (le prénom)
   function modifierEtudiant(emailAModifier) {
     const etudiant = etudiants.find((e) => e.email === emailAModifier);
     const nouveauPrenom = window.prompt(
@@ -108,7 +101,6 @@ function App() {
     }
   }
 
-  // Filtrer les étudiants selon la filière saisie
   const etudiantsFiltres = etudiants.filter((etudiant) =>
     etudiant.filiere.toLowerCase().includes(filtreFiliere.toLowerCase())
   );
@@ -120,14 +112,12 @@ function App() {
 
       <main className="main-content">
         <div className="toolbar">
-          {/* Bouton pour ajouter un étudiant */}
           <div className="actions">
             <button className="btn-add" onClick={ajouterEtudiant}>
               + Ajouter un étudiant
             </button>
           </div>
 
-          {/* Champ pour filtrer les étudiants selon leur filière */}
           <div className="filter-container">
             <input
               type="text"
@@ -139,7 +129,6 @@ function App() {
           </div>
         </div>
 
-        {/* Liste des fiches étudiants */}
         <div className="container">
           {etudiantsFiltres.length > 0 ? (
             etudiantsFiltres.map((etudiant) => (
