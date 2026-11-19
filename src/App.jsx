@@ -6,7 +6,7 @@ import StudentCard from "./components/StudentCard.jsx";
 import Footer from "./components/Footer.jsx";
 import ayoubImage from "./assets/ayoub.jpg";
 import studentImage from "./assets/student.jpg";
-
+import StudentForm from "./StudentForm.jsx";
 function App() {
   const [etudiants, setEtudiants] = useState([
     {
@@ -56,20 +56,31 @@ function App() {
   const [filtreFiliere, setFiltreFiliere] = useState("");
 
   function ajouterEtudiant() {
-    const emailBase = "yassine.bensalem";
-    const exists = etudiants.some((e) => e.email === `${emailBase}@gmail.com`);
-    const email = exists
-      ? `${emailBase}${Date.now().toString().slice(-4)}@gmail.com`
-      : `${emailBase}@gmail.com`;
-
+    // const n_nom = window.prompt(
+    //   "Entrez le nom de l'étudiant :");
+    // const n_Prenom = window.prompt(
+    //   "Entrez le prénom de l'étudiant :");
+    //   const n_email = window.prompt(
+    //   "Entrez le email de l'étudiant :");
+    //   const n_tlfn = window.prompt(
+    //   "Entrez le numero de l'étudiant :");
+    //   const n_fil = window.prompt(
+    //   "Entrez le filiere de l'étudiant :");
+    //   const n_ann = window.prompt(
+    //   "Entrez l'anneé de l'étudiant :");
+    //   const n_groupe = window.prompt(
+    //   "Entrez le groupe de l'étudiant :");
+    //   const n_ville = window.prompt(
+    //   "Entrez le ville de l'étudiant :");
+        
     const nouvelEtudiant = {
-      nom: "Ben Salem",
-      prenom: "Yassine",
-      email: email,
-      telephone: "+216 44 444 444",
+      nom: "ismail",
+      prenom: "kotti",
+      email: "kotti@gmail.com",
+      telephone: 67676767,
       filiere: "Génie Logiciel et Systèmes d'Information",
-      anneeEtude: "2ème année",
-      groupe: "GLSI 1",
+      anneeEtude: "2éme année",
+      groupe: "GLSI B",
       ville: "Sfax",
       image: studentImage,
     };
@@ -109,14 +120,14 @@ function App() {
     <div className="app">
       <Header />
       <Navbar />
-
+      <StudentForm />
       <main className="main-content">
         <div className="toolbar">
-          <div className="actions">
+          {/* <div className="actions">
             <button className="btn-add" onClick={ajouterEtudiant}>
               + Ajouter un étudiant
             </button>
-          </div>
+          </div> */}
 
           <div className="filter-container">
             <input
