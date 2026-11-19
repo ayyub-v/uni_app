@@ -55,38 +55,14 @@ function App() {
 
   const [filtreFiliere, setFiltreFiliere] = useState("");
 
-  function ajouterEtudiant() {
-    // const n_nom = window.prompt(
-    //   "Entrez le nom de l'étudiant :");
-    // const n_Prenom = window.prompt(
-    //   "Entrez le prénom de l'étudiant :");
-    //   const n_email = window.prompt(
-    //   "Entrez le email de l'étudiant :");
-    //   const n_tlfn = window.prompt(
-    //   "Entrez le numero de l'étudiant :");
-    //   const n_fil = window.prompt(
-    //   "Entrez le filiere de l'étudiant :");
-    //   const n_ann = window.prompt(
-    //   "Entrez l'anneé de l'étudiant :");
-    //   const n_groupe = window.prompt(
-    //   "Entrez le groupe de l'étudiant :");
-    //   const n_ville = window.prompt(
-    //   "Entrez le ville de l'étudiant :");
-        
-    const nouvelEtudiant = {
-      nom: "ismail",
-      prenom: "kotti",
-      email: "kotti@gmail.com",
-      telephone: 67676767,
-      filiere: "Génie Logiciel et Systèmes d'Information",
-      anneeEtude: "2éme année",
-      groupe: "GLSI B",
-      ville: "Sfax",
-      image: studentImage,
+  function ajouterEtudiant(nouvelEtudiant) {
+    const etiudiantAvecId = {
+      ...nouvelEtudiant,
+      id: Date.now(),
     };
-
-    setEtudiants([...etudiants, nouvelEtudiant]);
+    setEtudiants((ancientEtudiants)=>[...ancientEtudiants, etiudiantAvecId]);
   }
+
 
   function supprimerEtudiant(emailASupprimer) {
     setEtudiants(
@@ -120,7 +96,9 @@ function App() {
     <div className="app">
       <Header />
       <Navbar />
-      <StudentForm />
+      <StudentForm 
+        onAjouterEtudiant={ajouterEtudiant}
+      />
       <main className="main-content">
         <div className="toolbar">
           {/* <div className="actions">
@@ -168,5 +146,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

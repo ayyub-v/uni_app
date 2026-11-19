@@ -1,20 +1,47 @@
 import "./StudentForm.css";
 import "./App.css";
-function StudentForm(){
+import { useState } from "react";
+function StudentForm({ onAjouterEtudiant }) {
+    const [nom, setNom] = useState("");
+    const [prenom, setPrenom] = useState("");
+    const [email, setEmail] = useState("");
+    const [telephone, setTelephone] = useState("");
+    const [filiere, setFiliere] = useState("");
+    const [anneeEtude, setAnneeEtude] = useState("");
+    const [groupe, setGroupe] = useState("");
+    const [ville, setVille] = useState("");
+    const [image, setImage] = useState("");
+function handleSubmit(e){
+    e.preventDefault();
+    const nouvelEtudiant = {
+      nom: nom,
+      prenom: prenom,
+      email: email,
+      telephone: telephone,
+      filiere: filiere,
+      anneeEtude: anneeEtude,
+      groupe: groupe,
+      ville: ville,
+      image: image,
+    };
+    console.log("nouvel étudiant ajouté:", nouvelEtudiant);
+    onAjouterEtudiant(nouvelEtudiant);
+}
     return (
     <div className="student-form">
         <h2>Ajouter un étudiant</h2>    
-    <form onsubmit="{handleSubmit}" className="student-form">
+    <form onSubmit={handleSubmit} className="student-form">
         <label htmlFor="nom">nom :</label><br />
-        <input value="{nom}" onChange={(e)=>setNom(e.target.value)} type="text" id="nom" name="nom" required /><br />
+        <input value={nom} onChange={(e)=>setNom(e.target.value)} type="text" id="nom" name="nom" required /><br />
         <label htmlFor="prenom">prenom :</label><br />
-        <input value="{prenom}" onChange={(e)=>setPrenom(e.target.value)} type="text" id="prenom" name="prenom" required /><br />
+        <input value={prenom} onChange={(e)=>setPrenom(e.target.value)} type="text" id="prenom" name="prenom" required /><br />
         <label htmlFor="email">email :</label><br />
-        <input value="{email}" onChange={(e)=>setEmail(e.target.value)} type="email" id="email" name="email" required /><br />
+        <input value={email} onChange={(e)=>setEmail(e.target.value)} type="email" id="email" name="email" required /><br />
         <label htmlFor="telephone">telephone :</label><br />
-        <input value="{telephone}" onChange={(e)=>setTelephone(e.target.value)} type="tel" id="telephone" name="telephone" required /><br />
+        <input value={telephone} onChange={(e)=>setTelephone(e.target.value)} type="tel" id="telephone" name="telephone" required /><br />
         <label htmlFor="filiere">filiere :</label><br />
-        <select value="{filiere}" onChange={(e)=>setFiliere(e.target.value)} id="filiere" name="filiere" required><br />
+        
+        <select value={filiere} onChange={(e)=>setFiliere(e.target.value)} id="filiere" name="filiere" required><br />
             <option value="Genie logiciel">Genie logiciel</option>
             <option value="LCS">LCS</option>
             <option value="IOT">IOT</option>
@@ -22,11 +49,11 @@ function StudentForm(){
             <option value="IRS">IRS</option>
         </select><br />
         <label htmlFor="anneeEtude">anneeEtude :</label><br />
-        <input value="{anneeEtude}" onChange={(e)=>setAnneeEtude(e.target.value)} type="number" id="anneeEtude" name="anneeEtude" required /><br />
+        <input value={anneeEtude} onChange={(e)=>setAnneeEtude(e.target.value)} type="number" id="anneeEtude" name="anneeEtude" required /><br />
         <label htmlFor="groupe">groupe :</label><br />
-        <input value="{groupe}" onChange={(e)=>setGroupe(e.target.value)} type="text" id="groupe" name="groupe" required /><br />
+        <input value={groupe} onChange={(e)=>setGroupe(e.target.value)} type="text" id="groupe" name="groupe" required /><br />
         <label htmlFor="ville">ville :</label><br />
-        <input value="{ville}" onChange={(e)=>setVille(e.target.value)} type="text" id="ville" name="ville" required /><br />
+        <input value={ville} onChange={(e)=>setVille(e.target.value)} type="text" id="ville" name="ville" required /><br />
         <label htmlFor="image">image :</label><br />
         <input 
         
